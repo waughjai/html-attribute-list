@@ -1,0 +1,26 @@
+{
+    "name": "waughj/html-attribute-list",
+    "description": "A list o' HTML attributes for easy HTML generation.",
+    "keywords": [ "html", "attribute", "list" ],
+    "license": "GPL-2.0-or-later",
+    "authors": [
+        {
+            "name": "Jaimeson Waugh",
+            "email": "waughjai@gmail.com"
+        }
+    ],
+    "type": "project",
+	"minimum-stability": "dev",
+    "require": {
+		"php": ">=7.2"
+    },
+    "require-dev": {
+		"phpunit/phpunit": "6.*",
+		"waughj/html-attribute": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "WaughJ\\HTMLAttributeList\\": "src/"
+        }
+    }
+}
