@@ -8,8 +8,8 @@ Just create an instance with a hash map with attribute names as keys & attribute
 ````
 $attribute_list = new HTMLAttributeList
 ([
-	'class' => 'footer',
- 	'id' => 'main-footer'
+  'class' => 'footer',
+   'id' => 'main-footer'
 ]);
 ````
 
