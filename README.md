@@ -13,7 +13,7 @@ $attribute_list = new HTMLAttributeList
 ]);
 ````
 
-& using it as a string or calling GetAttributesText() will automatically give you HTML code for the attributes, starting with a space.
+& using it as a string or calling getAttributesText() will automatically give you HTML code for the attributes, starting with a space.
 
 Use like this:
 
