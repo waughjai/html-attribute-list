@@ -12,52 +12,52 @@ namespace WaughJ\HTMLAttributeList
 			$this->attributes = [];
 			foreach ( $attributes as $attribute_key => $attribute_value )
 			{
-				$this->attributes[ $attribute_key ] = new HTMLAttribute( $attribute_key, $attribute_value );
+				$this->attributes[ $attribute_key ] = new HTMLAttribute( $attribute_key, ( string )( $attribute_value ) );
 			}
 		}
 
 		public function __toString()
 		{
-			return $this->GetAttributesText();
+			return $this->getAttributesText();
 		}
 
 		// Returns HTML text with spaces 'tween attributes & starting with a space.
-		public function GetAttributesText() : string
+		public function getAttributesText() : string
 		{
 			return ( !empty( $this->attributes ) ) ? ' ' . implode( ' ', $this->attributes ) : '';
 		}
 
 		// Returns classic, indiced array o' Attribute objects.
-		public function GetAttributeValues() : array
+		public function getAttributeValues() : array
 		{
 			$array = [];
 			foreach ( $this->attributes as $attribute )
 			{
-				array_push( $array, $attribute->GetValue() );
+				array_push( $array, $attribute->getValue() );
 			}
 			return $array;
 		}
 
 		// Returns hash map / associative array o' Attribute objects.
-		public function GetAttributes() : array
+		public function getAttributes() : array
 		{
 			return $this->attributes;
 		}
 
 		// Get HTML text o' attribute
-		public function GetAttributeText( string $attribute_key ) : string
+		public function getAttributeText( string $attribute_key ) : string
 		{
-			$attribute = $this->GetAttribute( $attribute_key );
-			return ( $attribute ) ? $attribute->GetText() : '';
+			$attribute = $this->getAttribute( $attribute_key );
+			return ( $attribute ) ? $attribute->getText() : '';
 		}
 
-		public function GetAttributeValue( string $attribute_key ) : ?string
+		public function getAttributeValue( string $attribute_key ) : ?string
 		{
-			$attribute = $this->GetAttribute( $attribute_key );
-			return ( $attribute ) ? $attribute->GetValue() : null;
+			$attribute = $this->getAttribute( $attribute_key );
+			return ( $attribute ) ? $attribute->getValue() : null;
 		}
 
-		public function GetAttribute( string $attribute_key ) : ?HTMLAttribute
+		public function getAttribute( string $attribute_key ) : ?HTMLAttribute
 		{
 			if ( $this->hasAttribute( $attribute_key ) )
 			{
