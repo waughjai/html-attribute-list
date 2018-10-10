@@ -22,3 +22,25 @@ Use like this:
 & it will give you this:
 
 `<footer class="footer" id="main-footer"></footer>`
+
+An optional 2nd argument allows you to give the object a whitelist o' attribute keys, for an easy way to limit what attributes can be included:
+
+````
+$attribute_list = new HTMLAttributeList
+(
+    [
+        'class' => 'footer',
+        'id' => 'main-footer',
+        'talk' => 'blah',
+        'name' => 'jack'
+    ],
+    [
+        'class',
+        'id'
+    ]
+);
+````
+
+This will ignore the attributes 'talk' & 'name', giving the same HTML output as the last example.
+
+Thus for any code that generates certain HTML tags, you can easily make a whitelist o' valid attributes for that tag to apply to user-given attributes lists.
