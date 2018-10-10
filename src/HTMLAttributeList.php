@@ -59,11 +59,16 @@ namespace WaughJ\HTMLAttributeList
 
 		public function GetAttribute( string $attribute_key ) : ?HTMLAttribute
 		{
-			if ( isset( $this->attributes[ $attribute_key ] ) )
+			if ( $this->hasAttribute( $attribute_key ) )
 			{
 				return $this->attributes[ $attribute_key ];
 			}
 			return null;
+		}
+
+		public function hasAttribute( string $attribute_key ) : bool
+		{
+			return isset( $this->attributes[ $attribute_key ] );
 		}
 
 		private $attributes;

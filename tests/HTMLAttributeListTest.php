@@ -67,6 +67,13 @@ class HTMLAttributeListTest extends TestCase
 		}
 	}
 
+	public function testHasAttribute() : void
+	{
+		$attributes = $this->getDemoObject();
+		$this->assertEquals( $attributes->hasAttribute( 'class' ), true );
+		$this->assertEquals( $attributes->hasAttribute( 'porko' ), false );
+	}
+
 	private function getDemoObject() : HTMLAttributeList
 	{
 		return new HTMLAttributeList( self::DEMO_ATTS );
