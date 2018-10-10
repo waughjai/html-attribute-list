@@ -15,13 +15,13 @@ class HTMLAttributeListTest extends TestCase
 	public function testAttributesText() : void
 	{
 		$attribute = $this->getDemoObject();
-		$this->assertEquals( $attribute->GetAttributesText(), ' class="footer" id="main-footer"' );
+		$this->assertEquals( $attribute->getAttributesText(), ' class="footer" id="main-footer"' );
 	}
 
 	public function testAttributesValues() : void
 	{
 		$attributes = $this->getDemoObject();
-		$values = $attributes->GetAttributeValues();
+		$values = $attributes->getAttributeValues();
 		$this->assertEquals( count( $values ), count( self::DEMO_ATTS ) );
 		$this->assertEquals( $values, self::DEMO_VALUES );
 	}
@@ -29,7 +29,7 @@ class HTMLAttributeListTest extends TestCase
 	public function testAttributesObjects() : void
 	{
 		$attributes = $this->getDemoObject();
-		$objects = $attributes->GetAttributes();
+		$objects = $attributes->getAttributes();
 		$this->assertEquals( count( $objects ), 2 );
 		$expected_list = [ 'class' => new HTMLAttribute( 'class', 'footer' ), 'id' => new HTMLAttribute( 'id', 'main-footer' ) ];
 		$this->assertEquals( $objects, $expected_list );
@@ -40,7 +40,7 @@ class HTMLAttributeListTest extends TestCase
 		$attributes = $this->getDemoObject();
 		foreach ( self::DEMO_ATTS as $key => $val )
 		{
-			$attribute_text = $attributes->GetAttributeText( $key );
+			$attribute_text = $attributes->getAttributeText( $key );
 			$expected_text = $key . '="' . $val . '"';
 			$this->assertEquals( $attribute_text, $expected_text );
 		}
@@ -51,7 +51,7 @@ class HTMLAttributeListTest extends TestCase
 		$attributes = $this->getDemoObject();
 		foreach ( self::DEMO_ATTS as $key => $val )
 		{
-			$value = $attributes->GetAttributeValue( $key );
+			$value = $attributes->getAttributeValue( $key );
 			$this->assertEquals( $value, $val );
 		}
 	}
@@ -61,7 +61,7 @@ class HTMLAttributeListTest extends TestCase
 		$attributes = $this->getDemoObject();
 		foreach ( self::DEMO_ATTS as $key => $val )
 		{
-			$class_object = $attributes->GetAttribute( $key );
+			$class_object = $attributes->getAttribute( $key );
 			$expected_object = new HTMLAttribute( $key, $val );
 			$this->assertEquals( $class_object, $expected_object );
 		}
