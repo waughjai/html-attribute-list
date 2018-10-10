@@ -74,6 +74,15 @@ class HTMLAttributeListTest extends TestCase
 		$this->assertEquals( $attributes->hasAttribute( 'porko' ), false );
 	}
 
+	public function testValidAttributes() : void
+	{
+		$attributes = new HTMLAttributeList( [ 'class' => 'footer', 'id' => 'main-footer', 'food' => 'pork', 'something' => 'something' ], [ 'class', 'id' ] );
+		$this->assertEquals( $attributes->hasAttribute( 'pork' ), false );
+		$this->assertEquals( $attributes->hasAttribute( 'something' ), false );
+		$this->assertEquals( $attributes->hasAttribute( 'class' ), true );
+		$this->assertEquals( $attributes->hasAttribute( 'id' ), true );
+	}
+
 	private function getDemoObject() : HTMLAttributeList
 	{
 		return new HTMLAttributeList( self::DEMO_ATTS );

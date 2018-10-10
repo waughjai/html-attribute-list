@@ -7,12 +7,26 @@ namespace WaughJ\HTMLAttributeList
 
 	class HTMLAttributeList
 	{
+		// $attributes is hash map o' attribute keys & values.
+		// Optional $valid_attributes is a whitelist indiced array o' attribute keys to allow.
+		// All pairs in $attributes not in $valid_attributes are ignored.
+		// If $valid_attributes is null, as default, all $attributes are accepted.
 		public function __construct( array $attributes, ?array $valid_attributes = null )
 		{
 			$this->attributes = [];
+
+			// If no valid attributes given, make all attribute keys valid;
+			if ( $valid_attributes === null )
+			{
+				$valid_attributes = array_keys( $attributes );
+			}
+
 			foreach ( $attributes as $attribute_key => $attribute_value )
 			{
-				$this->attributes[ $attribute_key ] = new HTMLAttribute( $attribute_key, ( string )( $attribute_value ) );
+				if ( in_array( $attribute_key, $valid_attributes ) )
+				{
+					$this->attributes[ $attribute_key ] = new HTMLAttribute( $attribute_key, ( string )( $attribute_value ) );
+				}
 			}
 		}
 
