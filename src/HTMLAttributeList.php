@@ -11,12 +11,12 @@ namespace WaughJ\HTMLAttributeList
 		// Optional $valid_attributes is a whitelist indiced array o' attribute keys to allow.
 		// All pairs in $attributes not in $valid_attributes are ignored.
 		// If $valid_attributes is null, as default, all $attributes are accepted.
-		public function __construct( array $attributes, ?array $valid_attributes = null )
+		public function __construct( array $attributes, $valid_attributes = null )
 		{
 			$this->attributes = [];
 
 			// If no valid attributes given, make all attribute keys valid;
-			if ( $valid_attributes === null )
+			if ( !is_array( $valid_attributes ) )
 			{
 				$valid_attributes = array_keys( $attributes );
 			}
