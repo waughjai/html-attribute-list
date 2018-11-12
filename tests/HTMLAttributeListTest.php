@@ -88,7 +88,7 @@ class HTMLAttributeListTest extends TestCase
 		return new HTMLAttributeList( self::DEMO_ATTS );
 	}
 
-	private const DEMO_KEYS = [ 'class', 'id' ];
-	private const DEMO_VALUES = [ 'footer', 'main-footer' ];
-	private const DEMO_ATTS = [ self::DEMO_KEYS[ 0 ] => self::DEMO_VALUES[ 0 ], self::DEMO_KEYS[ 1 ] => self::DEMO_VALUES[ 1 ] ];
+	private DEMO_KEYS = [ 'class', 'id' ];
+	private DEMO_VALUES = [ 'footer', 'main-footer' ];
+	private DEMO_ATTS = [ self::DEMO_KEYS[ 0 ] => self::DEMO_VALUES[ 0 ], self::DEMO_KEYS[ 1 ] => self::DEMO_VALUES[ 1 ] ];
 }
