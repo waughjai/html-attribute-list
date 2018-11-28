@@ -65,7 +65,7 @@ namespace WaughJ\HTMLAttributeList
 			return ( $attribute ) ? $attribute->getText() : '';
 		}
 
-		public function getAttributeValue( string $attribute_key ) : string
+		public function getAttributeValue( string $attribute_key )
 		{
 			$attribute = $this->getAttribute( $attribute_key );
 			return ( $attribute ) ? $attribute->getValue() : null;
