@@ -52,6 +52,17 @@ namespace WaughJ\HTMLAttributeList
 			return $array;
 		}
 
+		// Returns hash map / associative array o' attribute values.
+		public function getAttributeValuesMap() : array
+		{
+			$hash = [];
+			foreach ( $this->attributes as $attribute )
+			{
+				$hash[ $attribute->getKey() ] = $attribute->getValue();
+			}
+			return $hash;
+		}
+
 		// Returns hash map / associative array o' Attribute objects.
 		public function getAttributes() : array
 		{

@@ -26,6 +26,14 @@ class HTMLAttributeListTest extends TestCase
 		$this->assertEquals( $values, self::DEMO_VALUES );
 	}
 
+	public function testAttributesValuesMap() : void
+	{
+		$attributes = $this->getDemoObject();
+		$values = $attributes->getAttributeValuesMap();
+		$this->assertEquals( count( $values ), count( self::DEMO_ATTS ) );
+		$this->assertEquals( $values, self::DEMO_ATTS );
+	}
+
 	public function testAttributesObjects() : void
 	{
 		$attributes = $this->getDemoObject();
