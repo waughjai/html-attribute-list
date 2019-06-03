@@ -91,6 +91,51 @@ class HTMLAttributeListTest extends TestCase
 		$this->assertEquals( $attributes->hasAttribute( 'id' ), true );
 	}
 
+	public function testAttributeList() : void
+	{
+		$attributes = new HTMLAttributeList( [ 'class' => 'footer', 'id' => 'main-footer', 'food' => 'pork', 'something' => 'something' ], [ 'class', 'id' ] );
+		$this->assertEquals( $attributes->getAttributeList()[ 0 ], new HTMLAttribute( 'class', 'footer' ) );
+	}
+
+	public function testSetAttribute() : void
+	{
+		$attributes1 = new HTMLAttributeList( [ 'class' => 'footer', 'id' => 'main-footer', 'food' => 'pork', 'something' => 'something' ], [ 'class', 'id' ] );
+		$attributes2 = $attributes1->setAttribute( 'width', 200 )->setAttribute( 'class', 'header' );
+		$this->assertEquals( $attributes1->hasAttribute( 'width' ), false );
+		$this->assertEquals( $attributes2->hasAttribute( 'width' ), true );
+		$this->assertEquals( $attributes1->getAttributeValue( 'class' ), 'footer' );
+		$this->assertEquals( $attributes2->getAttributeValue( 'class' ), 'header' );
+		$this->assertEquals( $attributes2->getAttributeValue( 'id' ), 'main-footer' );
+	}
+
+	public function testRemoveAttribute() : void
+	{
+		$attributes1 = new HTMLAttributeList( [ 'class' => 'footer', 'id' => 'main-footer', 'food' => 'pork', 'something' => 'something' ], [ 'class', 'id' ] );
+		$attributes2 = $attributes1->removeAttribute( 'id' );
+		$this->assertEquals( $attributes1->hasAttribute( 'id' ), true );
+		$this->assertEquals( $attributes2->hasAttribute( 'id' ), false );
+		$this->assertEquals( $attributes2->getAttributeValue( 'class' ), 'footer' );
+	}
+
+	public function testAppendToAttribute() : void
+	{
+		$attributes1 = new HTMLAttributeList( [ 'class' => 'footer', 'id' => 'main-footer', 'food' => 'pork', 'something' => 'something' ], [ 'class', 'id' ] );
+		$attributes2 = $attributes1->appendToAttribute( 'class', 'main-footer' );
+		$this->assertEquals( 'footer', $attributes1->getAttributeValue( 'class' ) );
+		$this->assertEquals( 'footer main-footer', $attributes2->getAttributeValue( 'class' ) );
+	}
+
+	public function testRemoveFromAttribute() : void
+	{
+		$attributes1 = new HTMLAttributeList( [ 'class' => 'footer main-footer', 'id' => 'main-footer', 'food' => 'pork', 'something' => 'something' ], [ 'class', 'id' ] );
+		$attributes2 = $attributes1->removeFromAttribute( 'class', 'main-footer' );
+		$attributes3 = $attributes2->removeFromAttribute( 'class', 'footer' );
+		$this->assertEquals( 'footer main-footer', $attributes1->getAttributeValue( 'class' ) );
+		$this->assertEquals( 'footer', $attributes2->getAttributeValue( 'class' ) );
+		$this->assertEquals( $attributes3->hasAttribute( 'class' ), false );
+		$this->assertEquals( 'main-footer', $attributes3->getAttributeValue( 'id' ) );
+	}
+
 	private function getDemoObject() : HTMLAttributeList
 	{
 		return new HTMLAttributeList( self::DEMO_ATTS );
